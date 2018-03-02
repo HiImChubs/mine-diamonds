@@ -1,1 +1,1 @@
-# mine-diamonds
+# maze
