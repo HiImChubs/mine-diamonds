@@ -31,17 +31,34 @@ GREEN = (0, 255, 0)
 
 
 # Make a player
-player1 =  [200, 150, 25, 25]
+player1 =  [200, 150, 24, 24]
 vel1 = [0, 0]
-player1_speed = 5
+player1_speed = 4
 score1 = 0
 
 # make walls
-wall1 =  [300, 275, 200, 25]
-wall2 =  [400, 450, 200, 25]
-wall3 =  [100, 100, 25, 200]
+wall1 =  [24, 24, 24, 672]
+wall2 =  [48, 24, 888, 24]
+wall3 =  [912, 48, 24, 647]
+wall4 =  [24, 672, 912, 24]
+wall5 =  [48, 72, 144, 48]
+wall6 =  [48, 240, 48, 24]
+wall7 =  [96, 192, 96, 72] 
+wall8 =  [264, 48, 24, 120]
+wall9 =  [360, 120, 48, 48]
+wall10 = [360, 72, 48, 48]
+wall11 = [288, 144, 72, 120]
+#This one disapears by a switch
+wall12 = [96, 312, 24, 48]
+#-----------------------------
+wall13 = [120, 312, 72, 48]
+wall14 = [120, 360, 72, 48]
+wall15 = [168, 408, 24, 72]
+wall16 = [72, 432, 96, 48]
+wall17 = [72, 456, 24, 24]
 
-walls = [wall1, wall2, wall3]
+walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10,
+         wall11, wall12, wall13, wall14, wall15, wall16, wall17]
 
 # Make coins
 coin1 = [500, 300, 25, 25]
