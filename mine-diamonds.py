@@ -61,15 +61,16 @@ wall20 = [288, 336, 144, 144]
 wall21 = [384, 216, 48, 120]
 wall22 = [432, 216, 72, 48]
 wall23 = [456, 48, 48, 92]
-wall25 = [120, 552, 96, 48]
+wall25 = [96, 552, 96, 48]
 wall26 = [552, 96, 96, 48]
 wall27 = [600, 72, 48, 24]
-
+wall28 = [144, 528, 312, 48]
+wall29 = [96, 624, 192, 48]
 
 
 walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10,
          wall11, wall12, wall13, wall14, wall15, wall16, wall17, wall19, wall20,
-         wall21, wall22, wall23, wall25, wall26, wall27]
+         wall21, wall22, wall23, wall25, wall26, wall27, wall28, wall29]
 
 # Make coins
 coin1 = [500, 300, 25, 25]
