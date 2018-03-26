@@ -10,12 +10,14 @@ pygame.init()
 START = 0
 PLAYING = 1
 END = 2
+WIN = 3
 
 #Images
 diamond = pygame.image.load('img/diamond.png')
 wall = pygame.image.load('img/wall.png')
 startscreen = pygame.image.load("img/start.jpg")
 endscreen = pygame.image.load("img/end.jpg")
+winscreen = pygame.image.load("img/winscreen.jpg")
 # Window
 WIDTH = 960
 HEIGHT = 720
@@ -41,8 +43,7 @@ GREEN = (0, 255, 0)
 
 
 # Make a player
-player1 =  [48, 48, 24, 24]
-player2 =  [768, 648, 24, 24]
+
 player_img = pygame.image.load("img/steve.png")
 evil_img = pygame.image.load("img/creeper.png")
 vel1 = [0, 0]
@@ -69,7 +70,7 @@ wall14 = [120, 360, 72, 48]
 wall15 = [168, 408, 24, 72]
 wall16 = [72, 432, 96, 48]
 wall17 = [48, 456, 24, 24]
-wall19 = [48, 312, 48, 96]
+wall19 = [48, 312, 24, 96]
 wall20 = [288, 336, 144, 144]
 wall21 = [384, 216, 48, 120]
 wall22 = [432, 216, 72, 48]
@@ -87,7 +88,7 @@ wall36 = [696, 96, 48, 168]
 wall37 = [744, 96, 72, 48]
 wall38 = [768, 48, 48, 48]
 wall39 = [792, 144, 24, 72]
-wall40 = [792, 216, 24, 480]
+wall40 = [792, 216, 24, 432]
 wall41 = [744, 240, 48, 24]
 wall42 = [816, 504, 72, 48]
 wall43 = [840, 432, 72, 48]
@@ -105,9 +106,9 @@ wall55 = [576, 600, 48, 48]
 
 
 walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10,
-         wall11, wall12, wall13, wall14, wall15, wall16, wall17, wall19, wall20,
+         wall11, wall13, wall14, wall16, wall19, wall20,
          wall21, wall22, wall23, wall25, wall26, wall27, wall28, wall29, wall30,
-         wall31, wall33, wall35, wall36, wall37, wall38, wall39, wall40, wall41,
+         wall31, wall33, wall35, wall36, wall37, wall39, wall40, wall41,
          wall42, wall43, wall44, wall46, wall47, wall48, wall49, wall50, wall51,
          wall52, wall53, wall54, wall55]
 
@@ -123,13 +124,15 @@ def setup():
     vel1= [0,0]
     vel2= [0,0]
     walls = [wall1, wall2, wall3, wall4, wall5, wall6, wall7, wall8, wall9, wall10,
-         wall11, wall12, wall13, wall14, wall15, wall16, wall17, wall19, wall20,
+         wall11, wall13, wall14, wall16, wall19, wall20,
          wall21, wall22, wall23, wall25, wall26, wall27, wall28, wall29, wall30,
-         wall31, wall33, wall35, wall36, wall37, wall38, wall39, wall40, wall41,
+         wall31, wall33, wall35, wall36, wall37, wall39, wall40, wall41,
          wall42, wall43, wall44, wall46, wall47, wall48, wall49, wall50, wall51,
          wall52, wall53, wall54, wall55]
     coins = [coin1, coin2, coin3]
     pygame.mixer.music.play(-1)
+    player1 =  [48, 48, 24, 24]
+    player2 =  [768, 648, 24, 24]
 
     stage = START
     
@@ -155,6 +158,18 @@ while not done:
             if stage == END:
                 if event.key == pygame.K_SPACE:
                     setup()
+            if stage == WIN:
+                if event.key == pygame.K_SPACE:
+                    setup()
+            if stage == WIN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+            if stage == END:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+            if stage == START:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
 
     pressed = pygame.key.get_pressed()
 
@@ -260,7 +275,7 @@ while not done:
         slap.play()
         
     if len(coins) == 0:
-        win = True
+        stage = WIN
 
     ''' get player1 edges (makes collision resolution easier to read) '''
     left = player1[0]
@@ -325,6 +340,9 @@ while not done:
         screen.blit(startscreen, (0, 0))
     elif stage == END:
         screen.blit(endscreen, (0,0))
+        pygame.mixer.music.stop()
+    elif stage == WIN:
+        screen.blit(winscreen, (0,0))
         pygame.mixer.music.stop()
     
     # Update screen (Actually draw the picture in the window.)
